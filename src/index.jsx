@@ -1,24 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
+import "./index.css";
+import App from "./components/App/App";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./theme/theme.jsx";
 
-import store from './redux/store.js';
-import './index.css';
-import App from './components/App/App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const pallete = {
-
-}
-const darkPallette = {
-  
-}
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-    <React.StrictMode>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
       <Provider store={store}>
         <App />
       </Provider>
-    </React.StrictMode>
+    </ThemeProvider>
+  </React.StrictMode>
 );
