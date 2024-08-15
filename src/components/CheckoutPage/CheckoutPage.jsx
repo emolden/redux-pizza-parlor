@@ -43,7 +43,7 @@ function CheckoutPage () {
             data: orderToAdd
         })
         .then ((response) => {
-            history.push('/#/')
+            history.push('/')
             dispatch({
                 type: 'CLEAR_EVERYTHING',
             })
