@@ -2,6 +2,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+import OrderItem from "./OrderItem/OrderItem"
 
 export default function Admin() {
 
@@ -9,7 +10,6 @@ export default function Admin() {
 
     const [orders, setOrders] = useState([])
 
-    
     const getOrders = () => {axios.get(`/api/order`)
     .then(res => setOrders(res.data))
     .catch(err => console.log(`Error getting orders:`, err))
@@ -26,16 +26,7 @@ export default function Admin() {
                 </tr>
             </thead>
             <tbody>
-                {orders.map((order) => {
-                    return (
-                        <tr>
-                            <td>{order.customer_name}</td>
-                            <td>TIME PLACED GOES HERE</td>
-                            <td>{order.type}</td>
-                            <td>{order.total}</td>
-                        </tr>
-                    )
-                })}
+                {orders.map((order) => <OrderItem key={order.id} order={order}/>)}
             </tbody>
         </table>
     )
