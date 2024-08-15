@@ -33,7 +33,7 @@ const store = createStore(
   combineReducers({
     cart,
     total,
-    customer 
+    customer, 
   }),
   applyMiddleware(logger),
 );

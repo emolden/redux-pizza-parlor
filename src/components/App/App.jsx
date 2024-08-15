@@ -9,6 +9,7 @@ import PizzaList from "../PizzaList/PizzaList";
 import { useSelector } from "react-redux";
 import CustomerInfo from "../CustomerInfo/CustomerInfo";
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
+import Admin from "../Admin/Admin";
 
 function App() {
   const currentTotal = useSelector((store) => store.total);
@@ -30,6 +31,9 @@ function App() {
 
         <Route exact path = '/checkout'>
           <CheckoutPage />
+        </Route>
+        <Route exact path = '/admin'>
+          <Admin />
         </Route>
      </Router>
       <img src='images/pizza_photo.png' />
