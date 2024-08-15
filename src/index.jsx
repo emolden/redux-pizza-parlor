@@ -8,6 +8,13 @@ import App from './components/App/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const pallete = {
+
+}
+const darkPallette = {
+  
+}
+
 root.render(
     <React.StrictMode>
       <Provider store={store}>

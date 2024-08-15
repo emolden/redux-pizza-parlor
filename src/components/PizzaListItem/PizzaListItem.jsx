@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import REACT, { useState } from 'react';
+import { Button } from "@mui/material";
 
 
 
@@ -28,10 +29,13 @@ function PizzaListItem ({pizza}) {
 
     const handleAddRemoveButton = () => {
         if(addButton) {
-        return <button onClick={addPizza}>Add</button>
+        return <Button 
+        sx={{bgcolor: 'primary.main'}}
+        variant="outlined" 
+        onClick={addPizza}>Add</Button>
         } 
         else {
-        return <button onClick={removePizza}>Remove</button>
+        return <Button onClick={removePizza}>Remove</Button>
         }
     }
 

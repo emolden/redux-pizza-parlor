@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import PizzaListItem from "../PizzaListItem/PizzaListItem"
 import { useHistory } from 'react-router-dom'
+import { Button } from "@mui/material";
 
 
 export default function PizzaList(){
@@ -25,7 +26,7 @@ export default function PizzaList(){
     return(
         <>
         {pizzaList.map((pizza) => {return <PizzaListItem key={pizza.id} pizza={pizza}/>})}
-        <button onClick={navToPageTwo}>NEXT</button>
+        <Button onClick={navToPageTwo}>NEXT</Button>
         </>
     )
 }
