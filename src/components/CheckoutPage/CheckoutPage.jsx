@@ -1,3 +1,4 @@
+import { Button, Card, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
@@ -56,35 +57,39 @@ function CheckoutPage () {
 
     return (
         <div>
-            <h2>Step 3: Checkout</h2>
-        <section>
+            <h1>Step 3: Checkout</h1>
+        <Card sx={{ display : 'flex', justifyContent: 'space-between', px: 20}}>
             <div>
+                <h2>Customer Information</h2>
                 <h6>{customer.customer_name}</h6> 
                 <h6>{customer.street_address}</h6> 
                 <h6>{customer.city}, MN</h6> 
             </div>
             <h2>For {customer.type}</h2>
-        </section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                {cart.map(item => {
-                    return(
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.price}</td>
-                        </tr>
-                    )
-                })}
-            </tbody>
-        </table>
-        <h1>Total: {total}</h1>
-        <button onClick={addOrder}>CHECKOUT</button>
+        </Card>
+        <Card sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column', px: 50}}>
+            <h2>Order Details</h2>
+            <Table>
+                <TableHead>
+                    <TableRow >
+                        <TableCell sx={{ fontWeight: 'bold', fontSize: 16 }}>Pizza Type</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold', fontSize: 16 }}>Cost</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {cart.map(item => {
+                        return(
+                            <TableRow>
+                                <TableCell>{item.name}</TableCell>
+                                <TableCell>{item.price}</TableCell>
+                            </TableRow>
+                        )
+                    })}
+                </TableBody>
+            </Table>
+        </Card>
+        <h2>Total: ${total}</h2>
+        <Button variant="outlined" onClick={addOrder}>CHECKOUT</Button>
         </div>
     )
 }
