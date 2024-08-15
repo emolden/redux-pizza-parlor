@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import REACT, { useState } from 'react';
-import { Button } from "@mui/material";
+import { Button, Card } from "@mui/material";
 
 
 
@@ -30,17 +30,16 @@ function PizzaListItem ({pizza}) {
     const handleAddRemoveButton = () => {
         if(addButton) {
         return <Button 
-        sx={{bgcolor: 'primary.main'}}
         variant="outlined" 
         onClick={addPizza}>Add</Button>
         } 
         else {
-        return <Button onClick={removePizza}>Remove</Button>
+        return <Button variant="outlined" onClick={removePizza}>Remove</Button>
         }
     }
 
     return (
-        <div>
+        <Card sx={{maxWidth: 150, display: 'flex', flexDirection: "column"}}>
             <img src={pizza.image_path} />
             <h3>{pizza.name}</h3>
             <p>{pizza.description}</p>
@@ -48,7 +47,7 @@ function PizzaListItem ({pizza}) {
             <div>
                 {handleAddRemoveButton()}
             </div>
-        </div>
+        </Card>
 
     )
 }

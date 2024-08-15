@@ -1,3 +1,4 @@
+import { TableCell, TableRow } from "@mui/material";
 import moment from "moment";
 
 export default function OrderItem({order}) {
@@ -6,11 +7,11 @@ export default function OrderItem({order}) {
    const localMomentObj = momentObj.utcOffset(userOffset);
    const formattedDateTime = localMomentObj.format(' h:mm a'); 
   return (
-    <tr>
-      <td>{order.customer_name}</td>
-      <td>{formattedDateTime}</td>
-      <td>{order.type}</td>
-      <td>{order.total}</td>
-    </tr>
+    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+      <TableCell>{order.customer_name}</TableCell>
+      <TableCell>{formattedDateTime}</TableCell>
+      <TableCell>{order.type}</TableCell>
+      <TableCell>{order.total}</TableCell>
+    </TableRow>
   );
 }
