@@ -1,8 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import PizzaListItem from "../PizzaListItem/PizzaListItem"
+import { useHistory } from 'react-router-dom'
+
 
 export default function PizzaList(){
+
+    const history = useHistory();
     useEffect(() => getPizzas(), [])
 
     const [pizzaList, setPizzaList] = useState([])
@@ -13,10 +17,15 @@ export default function PizzaList(){
     .catch(err => console.log(`Err in GET/api/pizza`, err))
     }
 
+    const navToPageTwo = () => {
+        history.push(`/customer-info`);
+    }
+
 
     return(
         <>
         {pizzaList.map((pizza) => {return <PizzaListItem key={pizza.id} pizza={pizza}/>})}
+        <button onClick={navToPageTwo}>NEXT</button>
         </>
     )
 }
