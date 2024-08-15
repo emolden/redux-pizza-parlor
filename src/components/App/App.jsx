@@ -6,6 +6,7 @@ import {
   Link,
 } from "react-router-dom/cjs/react-router-dom.min.js";import PizzaList from '../PizzaList/PizzaList';
 import { useSelector } from 'react-redux';
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 function App() {
   const currentTotal= useSelector(store => store.total)
@@ -26,7 +27,7 @@ function App() {
     </Route>
 
     <Route exact path = '/otherstuff'>
-
+      <CheckoutPage />
     </Route>
     </Router>
       <img src='images/pizza_photo.png' />
