@@ -1,22 +1,33 @@
 import axios from "axios";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 function CheckoutPage () {
-    //make sure this matches from page 2
-    const customerInfo = useSelector (store => store.customerInfo);
+
+        const history = useHistory();
+        const dispatch = useDispatch();
+
+    //customer  is an object with keys: customer_name, street_address, 
+    //city, zip, and type
+    const customer = useSelector (store => store.customer);
+    console.log('customer info: ', customer);
+    //cart is an array of objects with keys: id, name, description, price, 
+    //image_path for pizzas
     const cart = useSelector (store => store.cart);
+    // total is a number that is equal to the total cost of the customer's 
+    //cart items
     const total = useSelector (store => store.total);
 
     const addOrder = (event) => {
         event.preventDefault();
 
         let orderToAdd = {
-            "customer_name": 'John Smith',
-            "street_address": '555 Applewood Lane',
-            "city": 'Minneapolis',
-            "zip": '10001',
+            "customer_name": customer.customer_name,
+            "street_address": customer.street_address,
+            "city": customer.city,
+            "zip": customer.zip,
             "total": total,
-            "type": "Delivery",
+            "type": customer.type,
             "pizzas": cart.map (item =>{
                 return (
                     {
@@ -32,9 +43,10 @@ function CheckoutPage () {
             data: orderToAdd
         })
         .then ((response) => {
-            //This function currently lives in PizzaList
-            // getPizzas();
-            //NAV to PizzaList
+            history.push('/#/')
+            dispatch({
+                type: 'CLEAR_EVERYTHING',
+            })
         })
         .catch ((error) => {
             console.log('Error in POST route: ', error)
@@ -47,11 +59,11 @@ function CheckoutPage () {
             <h2>Step 3: Checkout</h2>
         <section>
             <div>
-                <h6>John Smith</h6> {/*{customerInfo.customer_name} */}
-                <h6>555 Applewood Lane</h6> {/*{customerInfo.street_address} */}
-                <h6>Minneaplis, MN</h6> {/*{customerInfo.city}, MN */}
+                <h6>{customer.customer_name}</h6> 
+                <h6>{customer.street_address}</h6> 
+                <h6>{customer.city}, MN</h6> 
             </div>
-            <h2>For Delivery</h2> {/* For {customerInfo.type} */}
+            <h2>For {customer.type}</h2>
         </section>
         <table>
             <thead>

@@ -7,6 +7,8 @@ const cart = (state = [], action) => {
       return [...state, action.payload]
     case 'REMOVE_FROM_ORDER':
       return state.filter((pizza) => !action.payload.id)
+    case 'CLEAR_EVERYTHING':
+      return []
   }
   return state;
 }
@@ -17,14 +19,18 @@ const total = (state = 0, action) => {
       return state + Number(action.payload.price)
     case 'REMOVE_FROM_ORDER':
       return state - Number(action.payload.price)
+    case 'CLEAR_EVERYTHING':
+      return 0
   }
   return state
 }
 
 const customer = (state = {}, action) => {
   switch(action.type){
-    case 'CUSTOMER_UNFO':
+    case 'CUSTOMER_INFO':
       return action.payload
+    case 'CLEAR_EVERYTHING':
+      return {}
   }
   return state
 }
