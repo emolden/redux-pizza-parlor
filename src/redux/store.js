@@ -6,7 +6,7 @@ const cart = (state = [], action) => {
     case 'ADD_TO_ORDER':
       return [...state, action.payload]
     case 'REMOVE_FROM_ORDER':
-      return state.filter((pizza) => !action.payload.id)
+      return state.filter((pizza) => pizza.id != action.payload.id)
     case 'CLEAR_EVERYTHING':
       return []
   }
