@@ -21,10 +21,19 @@ const total = (state = 0, action) => {
   return state
 }
 
+const customer = (state = {}, action) => {
+  switch(action.type){
+    case 'CUSTOMER_UNFO':
+      return action.payload
+  }
+  return state
+}
+
 const store = createStore(
   combineReducers({
     cart,
-    total
+    total,
+    customer 
   }),
   applyMiddleware(logger),
 );
