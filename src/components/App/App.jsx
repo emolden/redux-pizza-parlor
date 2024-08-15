@@ -8,6 +8,7 @@ import {
 import PizzaList from "../PizzaList/PizzaList";
 import { useSelector } from "react-redux";
 import CustomerInfo from "../CustomerInfo/CustomerInfo";
+import CheckoutPage from '../CheckoutPage/CheckoutPage';
 
 function App() {
   const currentTotal = useSelector((store) => store.total);
@@ -27,8 +28,13 @@ function App() {
           <CustomerInfo />
         </Route>
 
-        <Route exact path="/otherstuff"></Route>
-      </Router>
+        <Route exact path = '/checkout'>
+          <CheckoutPage />
+        </Route>
+     </Router>
+      <img src='images/pizza_photo.png' />
+      <p>Pizza is great.</p>
+  
     </div>
   );
 }
