@@ -1,5 +1,12 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: -10;
   font-family: sans-serif;
+}
+
+.App{
+  margin-bottom: -50px;
+  min-height: 100vh;
+  background: rgb(192,195,7) !important;
+  background: radial-gradient(circle, rgba(192,195,7,1) 0%, rgba(160,126,17,1) 15%, rgba(179,171,5,1) 41%, rgba(186,123,1,1) 84%, rgba(130,71,0,1) 100%) !important; 
 }
