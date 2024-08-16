@@ -4,23 +4,23 @@ import {
   HashRouter as Router,
   Route,
   Link,
+  useLocation
 } from "react-router-dom/cjs/react-router-dom.min.js";
 import PizzaList from "../PizzaList/PizzaList";
 import { useSelector } from "react-redux";
 import CustomerInfo from "../CustomerInfo/CustomerInfo";
 import CheckoutPage from '../CheckoutPage/CheckoutPage';
 import Admin from "../Admin/Admin";
+import Header from "../Header/Header";
 
 function App() {
-  const currentTotal = useSelector((store) => store.total);
+
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Prime Pizza</h1>
-        <p>${currentTotal}</p>
-      </header>
+      
       <Router>
+        <Header />
         <Route exact path="/">
           <PizzaList />
         </Route>
