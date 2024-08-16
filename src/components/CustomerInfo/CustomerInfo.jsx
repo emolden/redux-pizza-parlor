@@ -89,7 +89,7 @@ export default function CustomerInfo() {
           <FormControlLabel
             value="Delivery"
             control={<Radio />}
-            label="Pickup"
+            label="Delivery"
           />
           </RadioGroup>
         <Button onClick={handleCustomerSubmit}>Next</Button>
