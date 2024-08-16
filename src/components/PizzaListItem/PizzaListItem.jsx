@@ -30,7 +30,7 @@ function PizzaListItem ({pizza}) {
     const handleAddRemoveButton = () => {
         if(addButton) {
         return <Button 
-        variant="outlined" 
+        variant="filled"
         onClick={addPizza}>Add</Button>
         } 
         else {
