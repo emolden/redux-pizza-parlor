@@ -61,9 +61,9 @@ function CheckoutPage () {
         <Card sx={{ display : 'flex', justifyContent: 'space-between', px: 20}}>
             <div>
                 <h2>Customer Information</h2>
-                <h6>{customer.customer_name}</h6> 
-                <h6>{customer.street_address}</h6> 
-                <h6>{customer.city}, MN</h6> 
+                <h4>{customer.customer_name}</h4> 
+                <h4>{customer.street_address}</h4> 
+                <h4>{customer.city}, MN</h4> 
             </div>
             <h2>For {customer.type}</h2>
         </Card>
