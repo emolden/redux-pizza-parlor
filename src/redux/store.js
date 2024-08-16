@@ -16,9 +16,9 @@ const cart = (state = [], action) => {
 const total = (state = 0, action) => {
   switch(action.type) {
     case 'ADD_TO_ORDER':
-      return state + Number(action.payload.price)
+      return Math.round((state + Number(action.payload.price))*100)/100
     case 'REMOVE_FROM_ORDER':
-      return state - Number(action.payload.price)
+      return Math.round((state - Number(action.payload.price))*100)/100
     case 'CLEAR_EVERYTHING':
       return 0
   }
