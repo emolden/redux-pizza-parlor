@@ -1,3 +1,4 @@
+import { Box, Button, Card, FormControl, FormControlLabel, FormLabel, Input, InputLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -10,6 +11,8 @@ export default function CustomerInfo() {
   const [cityInput, setCityInput] = useState(``);
   const [zipInput, setZipInput] = useState(``);
   const [orderTypeInput, setOrderTypeInput] = useState(``);
+
+ 
 
   const handleCustomerSubmit = (e) => {
     e.preventDefault();
@@ -27,57 +30,70 @@ export default function CustomerInfo() {
   };
 
   return (
-    <>
+    <Box
+      conponent="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete='off'
+    >
       <h2>Customer Information</h2>
-      <form onSubmit={handleCustomerSubmit}>
-        <input
+        <FormControl>
+        <TextField
           required
-          type="text"
-          placeholder="Name"
+          id="outlined-required"
+          label="Required"
+          helperText="Name"
           value={nameInput}
           onChange={(e) => setNameInput(e.target.value)}
         />
-        <input
+        <TextField
           required
-          type="text"
-          placeholder="Street Address"
+          id="outlined-required"
+          label="Required"
+          helperText="Street Address"
           value={addressInput}
           onChange={(e) => setAddressInput(e.target.value)}
         />
-        <input
+        <TextField
           required
-          type="text"
-          placeholder="City"
+          id="outlined-required"
+          label="Required"
+          helperText="City"
           value={cityInput}
           onChange={(e) => setCityInput(e.target.value)}
         />
-        <input
+        <TextField
           required
+          id="outlined-required"
+          label="Required"
           type="number"
-          placeholder="Zip"
+          helperText="Zip Code"
           value={zipInput}
           onChange={(e) => setZipInput(e.target.value)}
         />
-        <div>
-          <label htmlFor="Pickup">Pickup</label>
-          <input
-            id="Pickup"
-            type="radio"
+          <FormLabel id="distribution-method-radio-group"> Distribution Options</FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="distribution-method-radio-group"
+            name="distribution-options-radio-buttons-group"
+            value={orderTypeInput}
+            onChange={(e) => setOrderTypeInput(e.target.value)}
+          >
+          <FormControlLabel
             value="Pickup"
-            checked={orderTypeInput === "Pickup"}
-            onChange={() => setOrderTypeInput("Pickup")}
+            control={<Radio />}
+            label="Pickup"
           />
-          <label htmlFor="Delivery">Delivery</label>
-          <input
-            id="Delivery"
-            type="radio"
+          <FormControlLabel
             value="Delivery"
-            checked={orderTypeInput === "Delivery"}
-            onChange={() => setOrderTypeInput("Delivery")}
+            control={<Radio />}
+            label="Pickup"
           />
-        </div>
-        <button>Next</button>
-      </form>
-    </>
+          </RadioGroup>
+        <Button onClick={handleCustomerSubmit}>Next</Button>
+      </FormControl>
+    </Box>
   );
 }
